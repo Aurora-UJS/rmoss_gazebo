@@ -18,23 +18,21 @@
 #include <memory>
 #include <string>
 
-#include "rclcpp/rclcpp.hpp"
-#include "rmoss_interfaces/msg/gimbal_cmd.hpp"
-#include "rmoss_interfaces/msg/gimbal.hpp"
-#include "pid.hpp"
 #include "hardware_interface.hpp"
+#include "pid.hpp"
+#include "rclcpp/rclcpp.hpp"
+#include "rmoss_interfaces/msg/gimbal.hpp"
+#include "rmoss_interfaces/msg/gimbal_cmd.hpp"
 
-namespace rmoss_gz_base
-{
+namespace rmoss_gz_base {
 
-class GimbalController
-{
+class GimbalController {
 public:
   GimbalController(
-    rclcpp::Node::SharedPtr node,
-    Actuator<rmoss_interfaces::msg::Gimbal>::SharedPtr gimbal_vel_actuator,
-    Sensor<rmoss_interfaces::msg::Gimbal>::SharedPtr gimbal_pos_sensor,
-    const std::string & controller_name = "gimbal_controller");
+      rclcpp::Node::SharedPtr node,
+      Actuator<rmoss_interfaces::msg::Gimbal>::SharedPtr gimbal_vel_actuator,
+      Sensor<rmoss_interfaces::msg::Gimbal>::SharedPtr gimbal_pos_sensor,
+      const std::string &controller_name = "gimbal_controller");
   ~GimbalController() {}
 
 public:
@@ -53,8 +51,10 @@ private:
 private:
   rclcpp::Node::SharedPtr node_;
   // ros pub and sub
-  rclcpp::Subscription<rmoss_interfaces::msg::GimbalCmd>::SharedPtr ros_gimbal_cmd_sub_;
-  rclcpp::Publisher<rmoss_interfaces::msg::Gimbal>::SharedPtr ros_gimbal_state_pub_;
+  rclcpp::Subscription<rmoss_interfaces::msg::GimbalCmd>::SharedPtr
+      ros_gimbal_cmd_sub_;
+  rclcpp::Publisher<rmoss_interfaces::msg::Gimbal>::SharedPtr
+      ros_gimbal_state_pub_;
   rclcpp::TimerBase::SharedPtr controller_timer_;
   rclcpp::TimerBase::SharedPtr gimbal_state_timer_;
   // control interface
@@ -68,13 +68,13 @@ private:
   // pid and pid parameter
   PidParam picth_pid_param_;
   PidParam yaw_pid_param_;
-  ignition::math::PID picth_pid_;
-  ignition::math::PID yaw_pid_;
+  gz::math::PID picth_pid_;
+  gz::math::PID yaw_pid_;
   std::chrono::nanoseconds pid_period_;
   // flag
   bool update_pid_flag_{true};
 };
 
-}  // namespace rmoss_gz_base
+} // namespace rmoss_gz_base
 
-#endif  // RMOSS_GZ_BASE__GIMBAL_CONTROLLER_HPP_
+#endif // RMOSS_GZ_BASE__GIMBAL_CONTROLLER_HPP_

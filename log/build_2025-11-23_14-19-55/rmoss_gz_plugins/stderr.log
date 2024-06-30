@@ -1,0 +1,10 @@
+[01m[K/home/xlqmu/rmoss_gazebo/rmoss_gz_plugins/plugins/mecanum_drive2/MecanumDrive2.cc:[m[K In member function ‘[01m[Kvoid gz::sim::v8::systems::MecanumDrive2Private::[01;32m[KUpdateOdometry[m[K(const gz::sim::v8::UpdateInfo&, const gz::sim::v8::EntityComponentManager&)[m[K’:
+[01m[K/home/xlqmu/rmoss_gazebo/rmoss_gz_plugins/plugins/mecanum_drive2/MecanumDrive2.cc:226:33:[m[K [01;35m[Kwarning: [m[K‘[01m[Kgz::math::v7::Pose3<T> gz::math::v7::Pose3<T>::[01;32m[Koperator-[m[K(const gz::math::v7::Pose3<T>&) const [35m[K[with T = double][m[K[m[K’ is deprecated [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+  226 |   auto diffPose = chassisPose - [01;35m[KinitPose[m[K;
+      |                                 [01;35m[K^~~~~~~~[m[K
+In file included from [01m[K/opt/ros/jazzy/opt/gz_math_vendor/include/gz/math7/gz/math/Inertial.hh:26[m[K,
+                 from [01m[K/opt/ros/jazzy/opt/gz_sim_vendor/include/gz/sim8/gz/sim/Conversions.hh:44[m[K,
+                 from [01m[K/home/xlqmu/rmoss_gazebo/rmoss_gz_plugins/plugins/mecanum_drive2/MecanumDrive2.cc:21[m[K:
+[01m[K/opt/ros/jazzy/opt/gz_math_vendor/include/gz/math7/gz/math/Pose3.hh:222:39:[m[K [01;36m[Knote: [m[Kdeclared here
+  222 |     public: GZ_DEPRECATED(7) Pose3<T> [01;36m[Koperator[m[K-(const Pose3<T> &_pose) const
+      |                                       [01;36m[K^~~~~~~~[m[K

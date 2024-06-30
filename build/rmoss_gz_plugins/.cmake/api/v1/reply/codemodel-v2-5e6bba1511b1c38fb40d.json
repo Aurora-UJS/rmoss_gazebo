@@ -1,0 +1,97 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Release-82e0a37a860061fdacfc.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10.2"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "rmoss_gz_plugins",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "LightBarController::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-LightBarController-Release-29bae5a15ed9bc372257.json",
+					"name" : "LightBarController",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "MecanumDrive2::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-MecanumDrive2-Release-fc5a56eb98f26d7c92f4.json",
+					"name" : "MecanumDrive2",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ProjectileShooter::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ProjectileShooter-Release-dcb01ff29bf6be98152f.json",
+					"name" : "ProjectileShooter",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "rmoss_gz_plugins_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-rmoss_gz_plugins_uninstall-Release-d94eba2309b003386536.json",
+					"name" : "rmoss_gz_plugins_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-Release-8e442dca76090735579d.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/xlqmu/rmoss_gazebo/build/rmoss_gz_plugins",
+		"source" : "/home/xlqmu/rmoss_gazebo/rmoss_gz_plugins"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

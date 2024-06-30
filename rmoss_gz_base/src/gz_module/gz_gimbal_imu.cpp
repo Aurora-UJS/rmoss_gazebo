@@ -17,46 +17,42 @@
 #include <memory>
 #include <string>
 
-namespace rmoss_gz_base
-{
+namespace rmoss_gz_base {
 
-
-double toPitch(const double & x, const double & y, const double & z, const double & w)
-{
+double toPitch(const double &x, const double &y, const double &z,
+               const double &w) {
   // pitch (y-axis rotation)
   double pitch;
   double sinp = +2.0 * (w * y - z * x);
   if (fabs(sinp) >= 1) {
-    pitch = copysign(M_PI / 2, sinp);     // use 90 degrees if out of range
+    pitch = copysign(M_PI / 2, sinp); // use 90 degrees if out of range
   } else {
     pitch = asin(sinp);
   }
   return pitch;
 }
 
-double toYaw(const double & x, const double & y, const double & z, const double & w)
-{
+double toYaw(const double &x, const double &y, const double &z,
+             const double &w) {
   double siny_cosp = +2.0 * (w * z + x * y);
   double cosy_cosp = +1.0 - 2.0 * (y * y + z * z);
   return atan2(siny_cosp, cosy_cosp);
 }
 
-IgnGimbalImu::IgnGimbalImu(
-  rclcpp::Node::SharedPtr node,
-  std::shared_ptr<ignition::transport::Node> gz_node,
-  const std::string & gz_gimbal_imu_topic)
-: node_(node), gz_node_(gz_node)
-{
-  gz_node_->Subscribe(gz_gimbal_imu_topic, &IgnGimbalImu::gz_imu_cb, this);
-  position_sensor_ = std::make_shared<DataSensor<rmoss_interfaces::msg::Gimbal>>();
+GzGimbalImu::GzGimbalImu(rclcpp::Node::SharedPtr node,
+                         std::shared_ptr<gz::transport::Node> gz_node,
+                         const std::string &gz_gimbal_imu_topic)
+    : node_(node), gz_node_(gz_node) {
+  gz_node_->Subscribe(gz_gimbal_imu_topic, &GzGimbalImu::gz_imu_cb, this);
+  position_sensor_ =
+      std::make_shared<DataSensor<rmoss_interfaces::msg::Gimbal>>();
 }
 
-void IgnGimbalImu::gz_imu_cb(const ignition::msgs::IMU & msg)
-{
+void GzGimbalImu::gz_imu_cb(const gz::msgs::IMU &msg) {
   if (!enable_) {
     return;
   }
-  auto & q = msg.orientation();
+  auto &q = msg.orientation();
   double pitch_angle = toPitch(q.x(), q.y(), q.z(), q.w());
   double yaw_angle = toYaw(q.x(), q.y(), q.z(), q.w());
   // continuous yaw
@@ -75,4 +71,4 @@ void IgnGimbalImu::gz_imu_cb(const ignition::msgs::IMU & msg)
   position_sensor_->update(cur_position_, node_->get_clock()->now());
 }
 
-}  // namespace rmoss_gz_base
+} // namespace rmoss_gz_base

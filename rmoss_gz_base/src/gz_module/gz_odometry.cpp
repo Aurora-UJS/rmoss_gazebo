@@ -17,27 +17,22 @@
 #include <memory>
 #include <string>
 
-namespace rmoss_gz_base
-{
+namespace rmoss_gz_base {
 
-
-IgnOdometry::IgnOdometry(
-  rclcpp::Node::SharedPtr node,
-  std::shared_ptr<ignition::transport::Node> gz_node,
-  const std::string & gz_odom_topic)
-: node_(node), gz_node_(gz_node)
-{
-  gz_node_->Subscribe(gz_odom_topic, &IgnOdometry::gz_odometry_cb, this);
+GzOdometry::GzOdometry(rclcpp::Node::SharedPtr node,
+                       std::shared_ptr<gz::transport::Node> gz_node,
+                       const std::string &gz_odom_topic)
+    : node_(node), gz_node_(gz_node) {
+  gz_node_->Subscribe(gz_odom_topic, &GzOdometry::gz_odometry_cb, this);
   odometry_sensor_ = std::make_shared<DataSensor<nav_msgs::msg::Odometry>>();
 }
 
-void IgnOdometry::gz_odometry_cb(const ignition::msgs::Odometry & msg)
-{
+void GzOdometry::gz_odometry_cb(const gz::msgs::Odometry &msg) {
   if (!enable_) {
     return;
   }
   nav_msgs::msg::Odometry odom_msg;
-  auto & pose = msg.pose();
+  auto &pose = msg.pose();
   odom_msg.pose.pose.position.x = pose.position().x();
   odom_msg.pose.pose.position.y = pose.position().y();
   odom_msg.pose.pose.position.z = pose.position().z();
@@ -51,4 +46,4 @@ void IgnOdometry::gz_odometry_cb(const ignition::msgs::Odometry & msg)
   odometry_sensor_->update(odom_msg, node_->get_clock()->now());
 }
 
-}  // namespace rmoss_gz_base
+} // namespace rmoss_gz_base

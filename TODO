@@ -1,0 +1,12 @@
+CMAKELISTS:
+rmoss_gz_base
+rmoss_gz_plugins
+PACKAGE:
+rmoss_gz_base
+rmoss_gz_plugins
+INCLUDE:
+rmoss_gz_base
+rmoss_gz_plugins
+SRC:
+rmoss_gz_base
+rmoss_gz_plugins

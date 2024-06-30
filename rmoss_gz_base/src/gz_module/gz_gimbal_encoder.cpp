@@ -14,27 +14,25 @@
 
 #include "rmoss_gz_base/gz_gimbal_encoder.hpp"
 
+#include <cmath>
 #include <memory>
 #include <string>
-#include <cmath>
 
+namespace rmoss_gz_base {
 
-namespace rmoss_gz_base
-{
-
-IgnGimbalEncoder::IgnGimbalEncoder(
-  rclcpp::Node::SharedPtr node,
-  std::shared_ptr<ignition::transport::Node> gz_node,
-  const std::string & gz_joint_state_topic)
-: node_(node), gz_node_(gz_node)
-{
-  gz_node_->Subscribe(gz_joint_state_topic, &IgnGimbalEncoder::gz_Joint_state_cb, this);
-  position_sensor_ = std::make_shared<DataSensor<rmoss_interfaces::msg::Gimbal>>();
-  velocity_sensor_ = std::make_shared<DataSensor<rmoss_interfaces::msg::Gimbal>>();
+GzGimbalEncoder::GzGimbalEncoder(rclcpp::Node::SharedPtr node,
+                                 std::shared_ptr<gz::transport::Node> gz_node,
+                                 const std::string &gz_joint_state_topic)
+    : node_(node), gz_node_(gz_node) {
+  gz_node_->Subscribe(gz_joint_state_topic, &GzGimbalEncoder::gz_Joint_state_cb,
+                      this);
+  position_sensor_ =
+      std::make_shared<DataSensor<rmoss_interfaces::msg::Gimbal>>();
+  velocity_sensor_ =
+      std::make_shared<DataSensor<rmoss_interfaces::msg::Gimbal>>();
 }
 
-void IgnGimbalEncoder::gz_Joint_state_cb(const ignition::msgs::Model & msg)
-{
+void GzGimbalEncoder::gz_Joint_state_cb(const gz::msgs::Model &msg) {
   if (!enable_) {
     return;
   }
@@ -53,5 +51,4 @@ void IgnGimbalEncoder::gz_Joint_state_cb(const ignition::msgs::Model & msg)
   velocity_sensor_->update(velocity, node_->get_clock()->now());
 }
 
-
-}  // namespace rmoss_gz_base
+} // namespace rmoss_gz_base

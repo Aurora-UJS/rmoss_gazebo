@@ -1,9 +1,9 @@
 name: Build and Test
 on:
   push:
-    branches: [ humble ]
+    branches: [ jazzy ]
   pull_request:
-    branches: [ humble ]
+    branches: [ jazzy ]
   schedule:
     - cron: '0 21 * * *'
 jobs:
@@ -21,18 +21,18 @@ jobs:
       - name: Build rmoss_gazebo
         uses: ros-tooling/action-ros-ci@v0.2
         env:
-          GZ_VERSION: fortress
+          GZ_VERSION: harmonic
         with:
-          target-ros2-distro: humble
+          target-ros2-distro: jazzy
           vcs-repo-file-url: "${{ github.workspace }}/tools/dependency.repos"
           skip-tests: true
       - name: Test rmoss_gz_base
         run: |
           /usr/bin/bash .github/workflows/colcon_test.sh rmoss_gz_base
         env:
-          GZ_VERSION: fortress
+          GZ_VERSION: harmonic
       - name: Test rmoss_gz_cam
         run: |
           /usr/bin/bash .github/workflows/colcon_test.sh rmoss_gz_cam
         env:
-          IGNITION_VERSION: edifice
+          GZ_VERSION: harmonic

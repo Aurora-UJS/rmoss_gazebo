@@ -15,35 +15,34 @@
 #define RMOSS_GZ_BASE__GZ_GIMBAL_IMU_HPP_
 
 #include <memory>
-#include <string>
 #include <mutex>
+#include <string>
 
-#include "ignition/transport/Node.hh"
+#include "gz/transport/Node.hh"
 #include "hardware_interface.hpp"
 #include "rclcpp/clock.hpp"
 #include "rmoss_interfaces/msg/gimbal.hpp"
 
-namespace rmoss_gz_base
-{
+namespace rmoss_gz_base {
 
-class IgnGimbalImu
-{
+class GzGimbalImu {
 public:
-  IgnGimbalImu(
-    rclcpp::Node::SharedPtr node,
-    std::shared_ptr<ignition::transport::Node> gz_node,
-    const std::string & gz_gimbal_imu_topic);
-  ~IgnGimbalImu() {}
+  GzGimbalImu(rclcpp::Node::SharedPtr node,
+              std::shared_ptr<gz::transport::Node> gz_node,
+              const std::string &gz_gimbal_imu_topic);
+  ~GzGimbalImu() {}
 
-  void enable(bool enable) {enable_ = enable;}
-  Sensor<rmoss_interfaces::msg::Gimbal>::SharedPtr get_position_sensor() {return position_sensor_;}
+  void enable(bool enable) { enable_ = enable; }
+  Sensor<rmoss_interfaces::msg::Gimbal>::SharedPtr get_position_sensor() {
+    return position_sensor_;
+  }
 
 private:
-  void gz_imu_cb(const ignition::msgs::IMU & msg);
+  void gz_imu_cb(const gz::msgs::IMU &msg);
 
 private:
   rclcpp::Node::SharedPtr node_;
-  std::shared_ptr<ignition::transport::Node> gz_node_;
+  std::shared_ptr<gz::transport::Node> gz_node_;
   bool enable_{false};
   // sensor data
   double last_yaw_angle_{0};
@@ -52,6 +51,6 @@ private:
   std::shared_ptr<DataSensor<rmoss_interfaces::msg::Gimbal>> position_sensor_;
 };
 
-}  // namespace rmoss_gz_base
+} // namespace rmoss_gz_base
 
-#endif  // RMOSS_GZ_BASE__GZ_GIMBAL_IMU_HPP_
+#endif // RMOSS_GZ_BASE__GZ_GIMBAL_IMU_HPP_
