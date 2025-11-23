@@ -13,6 +13,7 @@
 // limitations under the License.
 #include "rmoss_gz_base/gz_gimbal_actuator.hpp"
 
+#include "gz/msgs/double.pb.h"
 #include <memory>
 #include <string>
 

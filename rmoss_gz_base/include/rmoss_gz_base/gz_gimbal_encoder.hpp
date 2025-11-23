@@ -21,6 +21,7 @@
 #include <string>
 #include <vector>
 
+#include "gz/msgs/model.pb.h"
 #include "gz/transport/Node.hh"
 #include "hardware_interface.hpp"
 #include "rmoss_interfaces/msg/gimbal.hpp"

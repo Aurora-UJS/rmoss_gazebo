@@ -18,6 +18,7 @@
 #include <mutex>
 #include <string>
 
+#include "gz/msgs/odometry.pb.h"
 #include "gz/transport/Node.hh"
 #include "hardware_interface.hpp"
 #include "nav_msgs/msg/odometry.hpp"

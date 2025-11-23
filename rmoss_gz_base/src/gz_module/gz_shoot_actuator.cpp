@@ -13,6 +13,8 @@
 // limitations under the License.
 #include "rmoss_gz_base/gz_shoot_actuator.hpp"
 
+#include "gz/msgs/double.pb.h"
+#include "gz/msgs/int32.pb.h"
 #include <memory>
 #include <string>
 

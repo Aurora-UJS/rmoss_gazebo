@@ -13,6 +13,7 @@
 // limitations under the License.
 #include "rmoss_gz_base/gz_light_bar_cmd.hpp"
 
+#include "gz/msgs/int32.pb.h"
 #include <memory>
 #include <string>
 

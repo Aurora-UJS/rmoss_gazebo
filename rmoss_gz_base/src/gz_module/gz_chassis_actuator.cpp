@@ -13,6 +13,7 @@
 // limitations under the License.
 #include "rmoss_gz_base/gz_chassis_actuator.hpp"
 
+#include "gz/msgs/twist.pb.h"
 #include <memory>
 #include <string>
 
