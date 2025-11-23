@@ -25,15 +25,16 @@
 #include "rmoss_interfaces/msg/chassis_cmd.hpp"
 #include "rmoss_interfaces/msg/gimbal.hpp"
 
-namespace rmoss_gz_base {
+namespace rmoss_gz_base
+{
 
 class ChassisController {
 public:
   ChassisController(
-      rclcpp::Node::SharedPtr node,
-      Actuator<geometry_msgs::msg::Twist>::SharedPtr chassis_actuator,
-      Sensor<rmoss_interfaces::msg::Gimbal>::SharedPtr gimbal_encoder,
-      const std::string &controller_name = "chassis_controller");
+    rclcpp::Node::SharedPtr node,
+    Actuator<geometry_msgs::msg::Twist>::SharedPtr chassis_actuator,
+    Sensor<rmoss_interfaces::msg::Gimbal>::SharedPtr gimbal_encoder,
+    const std::string & controller_name = "chassis_controller");
   ~ChassisController() {}
 
 public:
@@ -48,7 +49,7 @@ private:
 private:
   rclcpp::Node::SharedPtr node_;
   rclcpp::Subscription<rmoss_interfaces::msg::ChassisCmd>::SharedPtr
-      ros_chassis_cmd_sub_;
+    ros_chassis_cmd_sub_;
   rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr ros_cmd_vel_sub_;
   rclcpp::TimerBase::SharedPtr controller_timer_;
   // actuator and sensor

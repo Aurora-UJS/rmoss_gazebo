@@ -22,17 +22,19 @@
 #include "hardware_interface.hpp"
 #include "rmoss_interfaces/msg/gimbal.hpp"
 
-namespace rmoss_gz_base {
+namespace rmoss_gz_base
+{
 
 class GzGimbalActuator : public Actuator<rmoss_interfaces::msg::Gimbal> {
 public:
-  GzGimbalActuator(rclcpp::Node::SharedPtr node,
-                   std::shared_ptr<gz::transport::Node> gz_node,
-                   const std::string &gz_pitch_topic,
-                   const std::string &gz_yaw_topic);
+  GzGimbalActuator(
+    rclcpp::Node::SharedPtr node,
+    std::shared_ptr<gz::transport::Node> gz_node,
+    const std::string & gz_pitch_topic,
+    const std::string & gz_yaw_topic);
 
-  void set(const rmoss_interfaces::msg::Gimbal &data) override;
-  void enable(bool enable) { enable_ = enable; }
+  void set(const rmoss_interfaces::msg::Gimbal & data) override;
+  void enable(bool enable) {enable_ = enable;}
 
 private:
   rclcpp::Node::SharedPtr node_;

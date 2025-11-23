@@ -18,9 +18,11 @@
 #include <string>
 #include <thread>
 
-namespace rmoss_gz_base {
+namespace rmoss_gz_base
+{
 
-Rmua19RobotBaseNode::Rmua19RobotBaseNode(const rclcpp::NodeOptions &options) {
+Rmua19RobotBaseNode::Rmua19RobotBaseNode(const rclcpp::NodeOptions & options)
+{
   node_ = std::make_shared<rclcpp::Node>("robot_base", options);
   gz_node_ = std::make_shared<gz::transport::Node>();
   // parameters
@@ -36,14 +38,14 @@ Rmua19RobotBaseNode::Rmua19RobotBaseNode(const rclcpp::NodeOptions &options) {
   // ign topic string
   std::string gz_chassis_cmd_topic = "/" + robot_name + "/cmd_vel";
   std::string gz_pitch_cmd_topic =
-      "/model/" + robot_name + "/joint/gimbal_pitch_joint/cmd_vel";
+    "/model/" + robot_name + "/joint/gimbal_pitch_joint/cmd_vel";
   std::string gz_yaw_cmd_topic =
-      "/model/" + robot_name + "/joint/gimbal_yaw_joint/cmd_vel";
+    "/model/" + robot_name + "/joint/gimbal_yaw_joint/cmd_vel";
   std::string gz_joint_state_topic =
-      "/world/" + world_name + "/model/" + robot_name + "/joint_state";
+    "/world/" + world_name + "/model/" + robot_name + "/joint_state";
   std::string gz_gimbal_imu_topic = "/world/" + world_name + "/model/" +
-                                    robot_name +
-                                    "/link/gimbal_pitch/sensor/gimbal_imu/imu";
+    robot_name +
+    "/link/gimbal_pitch/sensor/gimbal_imu/imu";
   std::string gz_light_bar_cmd_topic = "/" + robot_name + "/color/set_state";
   // create hardware moudule
   // Actuator
@@ -77,13 +79,13 @@ Rmua19RobotBaseNode::Rmua19RobotBaseNode(const rclcpp::NodeOptions &options) {
   //
   using namespace std::placeholders;
   std::string robot_status_topic =
-      "/referee_system/" + robot_name + "/robot_status";
+    "/referee_system/" + robot_name + "/robot_status";
   robot_status_sub_ =
-      node_->create_subscription<rmoss_interfaces::msg::RobotStatus>(
+    node_->create_subscription<rmoss_interfaces::msg::RobotStatus>(
           robot_status_topic, 10,
           std::bind(&Rmua19RobotBaseNode::robot_status_cb, this, _1));
   std::string enable_power_topic =
-      "/referee_system/" + robot_name + "/enable_power";
+    "/referee_system/" + robot_name + "/enable_power";
   enable_power_sub_ = node_->create_subscription<std_msgs::msg::Bool>(
       enable_power_topic, 10,
       std::bind(&Rmua19RobotBaseNode::enable_power_cb, this, _1));
@@ -99,7 +101,8 @@ Rmua19RobotBaseNode::Rmua19RobotBaseNode(const rclcpp::NodeOptions &options) {
 }
 
 void Rmua19RobotBaseNode::robot_status_cb(
-    const rmoss_interfaces::msg::RobotStatus::SharedPtr msg) {
+  const rmoss_interfaces::msg::RobotStatus::SharedPtr msg)
+{
   int remain_num = msg->total_projectiles - msg->used_projectiles;
   if (remain_num < 0) {
     remain_num = 0;
@@ -108,7 +111,8 @@ void Rmua19RobotBaseNode::robot_status_cb(
 }
 
 void Rmua19RobotBaseNode::enable_power_cb(
-    const std_msgs::msg::Bool::SharedPtr msg) {
+  const std_msgs::msg::Bool::SharedPtr msg)
+{
   if (msg->data) {
     // enable power
     chassis_actuator_->enable(true);

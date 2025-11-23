@@ -20,12 +20,14 @@
 
 #include "gz/transport/Node.hh"
 
-namespace rmoss_gz_base {
+namespace rmoss_gz_base
+{
 
 class GzLightBarCmd {
 public:
-  GzLightBarCmd(std::shared_ptr<gz::transport::Node> gz_node,
-                const std::string &gz_cmd_topic);
+  GzLightBarCmd(
+    std::shared_ptr<gz::transport::Node> gz_node,
+    const std::string & gz_cmd_topic);
   ~GzLightBarCmd() {}
 
 public:

@@ -13,20 +13,25 @@
 // limitations under the License.
 #include "rmoss_gz_base/gz_light_bar_cmd.hpp"
 
-#include "gz/msgs/int32.pb.h"
 #include <memory>
 #include <string>
 
-namespace rmoss_gz_base {
+#include "gz/msgs/int32.pb.h"
 
-GzLightBarCmd::GzLightBarCmd(std::shared_ptr<gz::transport::Node> gz_node,
-                             const std::string &gz_cmd_topic)
-    : gz_node_(gz_node) {
+namespace rmoss_gz_base
+{
+
+GzLightBarCmd::GzLightBarCmd(
+  std::shared_ptr<gz::transport::Node> gz_node,
+  const std::string & gz_cmd_topic)
+: gz_node_(gz_node)
+{
   gz_cmd_pub_ = std::make_unique<gz::transport::Node::Publisher>(
       gz_node_->Advertise<gz::msgs::Int32>(gz_cmd_topic));
 }
 
-void GzLightBarCmd::set_state(int state) {
+void GzLightBarCmd::set_state(int state)
+{
   gz::msgs::Int32 gz_msg;
   gz_msg.set_data(state);
   gz_cmd_pub_->Publish(gz_msg);

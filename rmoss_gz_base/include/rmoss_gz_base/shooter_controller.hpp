@@ -24,14 +24,15 @@
 #include "rclcpp/rclcpp.hpp"
 #include "rmoss_interfaces/msg/shoot_cmd.hpp"
 
-namespace rmoss_gz_base {
+namespace rmoss_gz_base
+{
 
 class ShooterController {
 public:
   ShooterController(
-      rclcpp::Node::SharedPtr node,
-      Actuator<rmoss_interfaces::msg::ShootCmd>::SharedPtr shoot_actuator,
-      const std::string &controller_name = "chassis_controller");
+    rclcpp::Node::SharedPtr node,
+    Actuator<rmoss_interfaces::msg::ShootCmd>::SharedPtr shoot_actuator,
+    const std::string & controller_name = "chassis_controller");
   ~ShooterController() {}
 
 private:
@@ -41,7 +42,7 @@ private:
   rclcpp::Node::SharedPtr node_;
   // ros pub and sub
   rclcpp::Subscription<rmoss_interfaces::msg::ShootCmd>::SharedPtr
-      ros_shoot_cmd_sub_;
+    ros_shoot_cmd_sub_;
   Actuator<rmoss_interfaces::msg::ShootCmd>::SharedPtr shoot_actuator_;
 };
 } // namespace rmoss_gz_base

@@ -24,15 +24,16 @@
 #include "rmoss_interfaces/msg/gimbal.hpp"
 #include "rmoss_interfaces/msg/gimbal_cmd.hpp"
 
-namespace rmoss_gz_base {
+namespace rmoss_gz_base
+{
 
 class GimbalController {
 public:
   GimbalController(
-      rclcpp::Node::SharedPtr node,
-      Actuator<rmoss_interfaces::msg::Gimbal>::SharedPtr gimbal_vel_actuator,
-      Sensor<rmoss_interfaces::msg::Gimbal>::SharedPtr gimbal_pos_sensor,
-      const std::string &controller_name = "gimbal_controller");
+    rclcpp::Node::SharedPtr node,
+    Actuator<rmoss_interfaces::msg::Gimbal>::SharedPtr gimbal_vel_actuator,
+    Sensor<rmoss_interfaces::msg::Gimbal>::SharedPtr gimbal_pos_sensor,
+    const std::string & controller_name = "gimbal_controller");
   ~GimbalController() {}
 
 public:
@@ -52,9 +53,9 @@ private:
   rclcpp::Node::SharedPtr node_;
   // ros pub and sub
   rclcpp::Subscription<rmoss_interfaces::msg::GimbalCmd>::SharedPtr
-      ros_gimbal_cmd_sub_;
+    ros_gimbal_cmd_sub_;
   rclcpp::Publisher<rmoss_interfaces::msg::Gimbal>::SharedPtr
-      ros_gimbal_state_pub_;
+    ros_gimbal_state_pub_;
   rclcpp::TimerBase::SharedPtr controller_timer_;
   rclcpp::TimerBase::SharedPtr gimbal_state_timer_;
   // control interface

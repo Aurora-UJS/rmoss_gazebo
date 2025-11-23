@@ -24,22 +24,25 @@
 #include "rclcpp/clock.hpp"
 #include "rmoss_interfaces/msg/gimbal.hpp"
 
-namespace rmoss_gz_base {
+namespace rmoss_gz_base
+{
 
 class GzGimbalImu {
 public:
-  GzGimbalImu(rclcpp::Node::SharedPtr node,
-              std::shared_ptr<gz::transport::Node> gz_node,
-              const std::string &gz_gimbal_imu_topic);
+  GzGimbalImu(
+    rclcpp::Node::SharedPtr node,
+    std::shared_ptr<gz::transport::Node> gz_node,
+    const std::string & gz_gimbal_imu_topic);
   ~GzGimbalImu() {}
 
-  void enable(bool enable) { enable_ = enable; }
-  Sensor<rmoss_interfaces::msg::Gimbal>::SharedPtr get_position_sensor() {
+  void enable(bool enable) {enable_ = enable;}
+  Sensor<rmoss_interfaces::msg::Gimbal>::SharedPtr get_position_sensor()
+  {
     return position_sensor_;
   }
 
 private:
-  void gz_imu_cb(const gz::msgs::IMU &msg);
+  void gz_imu_cb(const gz::msgs::IMU & msg);
 
 private:
   rclcpp::Node::SharedPtr node_;

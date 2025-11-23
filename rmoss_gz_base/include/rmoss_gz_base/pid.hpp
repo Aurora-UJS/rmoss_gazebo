@@ -20,9 +20,11 @@
 #include "gz/math/PID.hh"
 #include "rclcpp/rclcpp.hpp"
 
-namespace rmoss_gz_base {
+namespace rmoss_gz_base
+{
 
-struct PidParam {
+struct PidParam
+{
   double p;
   double i;
   double d;
@@ -33,14 +35,17 @@ struct PidParam {
   double offset;
 };
 
-void declare_pid_parameter(rclcpp::Node::SharedPtr node,
-                           const std::string &name);
+void declare_pid_parameter(
+  rclcpp::Node::SharedPtr node,
+  const std::string & name);
 
-void declare_pid_parameter(rclcpp::Node::SharedPtr node,
-                           const std::string &name, PidParam &pid_param);
+void declare_pid_parameter(
+  rclcpp::Node::SharedPtr node,
+  const std::string & name, PidParam & pid_param);
 
-void get_pid_parameter(rclcpp::Node::SharedPtr node, const std::string &name,
-                       PidParam &pid_param);
+void get_pid_parameter(
+  rclcpp::Node::SharedPtr node, const std::string & name,
+  PidParam & pid_param);
 
 } // namespace rmoss_gz_base
 

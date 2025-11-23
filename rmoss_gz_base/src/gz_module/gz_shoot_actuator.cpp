@@ -13,30 +13,35 @@
 // limitations under the License.
 #include "rmoss_gz_base/gz_shoot_actuator.hpp"
 
-#include "gz/msgs/double.pb.h"
-#include "gz/msgs/int32.pb.h"
 #include <memory>
 #include <string>
 
-namespace rmoss_gz_base {
+#include "gz/msgs/double.pb.h"
+#include "gz/msgs/int32.pb.h"
 
-GzShootActuator::GzShootActuator(rclcpp::Node::SharedPtr node,
-                                 std::shared_ptr<gz::transport::Node> gz_node,
-                                 const std::string &robot_name,
-                                 const std::string &shooter_name)
-    : node_(node), gz_node_(gz_node) {
+namespace rmoss_gz_base
+{
+
+GzShootActuator::GzShootActuator(
+  rclcpp::Node::SharedPtr node,
+  std::shared_ptr<gz::transport::Node> gz_node,
+  const std::string & robot_name,
+  const std::string & shooter_name)
+: node_(node), gz_node_(gz_node)
+{
   // create gz pub
   std::string gz_shoot_cmd_topic =
-      "/" + robot_name + "/" + shooter_name + "/shoot";
+    "/" + robot_name + "/" + shooter_name + "/shoot";
   gz_shoot_cmd_pub_ = std::make_unique<gz::transport::Node::Publisher>(
       gz_node_->Advertise<gz::msgs::Int32>(gz_shoot_cmd_topic));
   std::string gz_set_vel_topic =
-      "/" + robot_name + "/" + shooter_name + "/set_vel";
+    "/" + robot_name + "/" + shooter_name + "/set_vel";
   gz_set_vel_pub_ = std::make_unique<gz::transport::Node::Publisher>(
       gz_node_->Advertise<gz::msgs::Double>(gz_set_vel_topic));
 }
 
-void GzShootActuator::set(const rmoss_interfaces::msg::ShootCmd &data) {
+void GzShootActuator::set(const rmoss_interfaces::msg::ShootCmd & data)
+{
   if (remain_num_ <= 0) {
     enable_ = false;
   }

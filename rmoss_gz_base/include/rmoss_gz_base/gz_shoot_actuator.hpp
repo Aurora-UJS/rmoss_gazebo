@@ -22,19 +22,21 @@
 #include "hardware_interface.hpp"
 #include "rmoss_interfaces/msg/shoot_cmd.hpp"
 
-namespace rmoss_gz_base {
+namespace rmoss_gz_base
+{
 
 class GzShootActuator : public Actuator<rmoss_interfaces::msg::ShootCmd> {
 public:
-  GzShootActuator(rclcpp::Node::SharedPtr node,
-                  std::shared_ptr<gz::transport::Node> gz_node,
-                  const std::string &robot_name,
-                  const std::string &shooter_name);
+  GzShootActuator(
+    rclcpp::Node::SharedPtr node,
+    std::shared_ptr<gz::transport::Node> gz_node,
+    const std::string & robot_name,
+    const std::string & shooter_name);
   ~GzShootActuator() {}
 
-  void set(const rmoss_interfaces::msg::ShootCmd &data) override;
-  void enable(bool enable) { enable_ = enable; }
-  void update_remain_num(int num) { remain_num_ = num; }
+  void set(const rmoss_interfaces::msg::ShootCmd & data) override;
+  void enable(bool enable) {enable_ = enable;}
+  void update_remain_num(int num) {remain_num_ = num;}
 
 private:
   rclcpp::Node::SharedPtr node_;

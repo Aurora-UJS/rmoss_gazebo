@@ -13,24 +13,29 @@
 // limitations under the License.
 #include "rmoss_gz_base/gz_gimbal_actuator.hpp"
 
-#include "gz/msgs/double.pb.h"
 #include <memory>
 #include <string>
 
-namespace rmoss_gz_base {
+#include "gz/msgs/double.pb.h"
 
-GzGimbalActuator::GzGimbalActuator(rclcpp::Node::SharedPtr node,
-                                   std::shared_ptr<gz::transport::Node> gz_node,
-                                   const std::string &gz_pitch_topic,
-                                   const std::string &gz_yaw_topic)
-    : node_(node), gz_node_(gz_node) {
+namespace rmoss_gz_base
+{
+
+GzGimbalActuator::GzGimbalActuator(
+  rclcpp::Node::SharedPtr node,
+  std::shared_ptr<gz::transport::Node> gz_node,
+  const std::string & gz_pitch_topic,
+  const std::string & gz_yaw_topic)
+: node_(node), gz_node_(gz_node)
+{
   gz_pitch_pub_ = std::make_unique<gz::transport::Node::Publisher>(
       gz_node_->Advertise<gz::msgs::Double>(gz_pitch_topic));
   gz_yaw_pub_ = std::make_unique<gz::transport::Node::Publisher>(
       gz_node_->Advertise<gz::msgs::Double>(gz_yaw_topic));
 }
 
-void GzGimbalActuator::set(const rmoss_interfaces::msg::Gimbal &data) {
+void GzGimbalActuator::set(const rmoss_interfaces::msg::Gimbal & data)
+{
   if (!enable_) {
     return;
   }

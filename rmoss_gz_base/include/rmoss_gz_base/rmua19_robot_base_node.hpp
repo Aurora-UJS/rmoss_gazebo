@@ -15,9 +15,10 @@
 #ifndef RMOSS_GZ_BASE__RMUA19_ROBOT_BASE_NODE_HPP_
 #define RMOSS_GZ_BASE__RMUA19_ROBOT_BASE_NODE_HPP_
 
-#include "rclcpp/rclcpp.hpp"
 #include <memory>
 #include <thread>
+
+#include "rclcpp/rclcpp.hpp"
 
 #include "rmoss_gz_base/gz_chassis_actuator.hpp"
 #include "rmoss_gz_base/gz_gimbal_actuator.hpp"
@@ -35,16 +36,18 @@
 #include "rmoss_interfaces/msg/robot_status.hpp"
 #include "std_msgs/msg/bool.hpp"
 
-namespace rmoss_gz_base {
+namespace rmoss_gz_base
+{
 // Node wrapper for Rmua19RobotBaseNode
 class Rmua19RobotBaseNode {
 public:
   explicit Rmua19RobotBaseNode(
-      const rclcpp::NodeOptions &options = rclcpp::NodeOptions());
+    const rclcpp::NodeOptions & options = rclcpp::NodeOptions());
 
 public:
   rclcpp::node_interfaces::NodeBaseInterface::SharedPtr
-  get_node_base_interface() {
+  get_node_base_interface()
+  {
     return node_->get_node_base_interface();
   }
 
@@ -57,7 +60,7 @@ private:
   std::shared_ptr<gz::transport::Node> gz_node_;
   // ros sub
   rclcpp::Subscription<rmoss_interfaces::msg::RobotStatus>::SharedPtr
-      robot_status_sub_;
+    robot_status_sub_;
   rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr enable_power_sub_;
   rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr enable_control_sub_;
   // gz actuator moudule

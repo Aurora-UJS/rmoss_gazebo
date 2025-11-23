@@ -24,22 +24,25 @@
 #include "nav_msgs/msg/odometry.hpp"
 #include "rclcpp/clock.hpp"
 
-namespace rmoss_gz_base {
+namespace rmoss_gz_base
+{
 
 class GzOdometry {
 public:
-  GzOdometry(rclcpp::Node::SharedPtr node,
-             std::shared_ptr<gz::transport::Node> gz_node,
-             const std::string &gz_odom_topic);
+  GzOdometry(
+    rclcpp::Node::SharedPtr node,
+    std::shared_ptr<gz::transport::Node> gz_node,
+    const std::string & gz_odom_topic);
   ~GzOdometry() {}
 
-  void enable(bool enable) { enable_ = enable; }
-  Sensor<nav_msgs::msg::Odometry>::SharedPtr get_odometry_sensor() {
+  void enable(bool enable) {enable_ = enable;}
+  Sensor<nav_msgs::msg::Odometry>::SharedPtr get_odometry_sensor()
+  {
     return odometry_sensor_;
   }
 
 private:
-  void gz_odometry_cb(const gz::msgs::Odometry &msg);
+  void gz_odometry_cb(const gz::msgs::Odometry & msg);
 
 private:
   rclcpp::Node::SharedPtr node_;
