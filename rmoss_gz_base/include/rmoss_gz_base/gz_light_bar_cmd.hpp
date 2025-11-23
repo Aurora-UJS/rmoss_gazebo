@@ -38,6 +38,6 @@ private:
   std::unique_ptr<gz::transport::Node::Publisher> gz_cmd_pub_;
 };
 
-} // namespace rmoss_gz_base
+}  // namespace rmoss_gz_base
 
 #endif // RMOSS_GZ_BASE__GZ_LIGHT_BAR_CMD_HPP_

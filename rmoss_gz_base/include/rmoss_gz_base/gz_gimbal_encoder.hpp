@@ -59,6 +59,6 @@ private:
   std::shared_ptr<DataSensor<rmoss_interfaces::msg::Gimbal>> velocity_sensor_;
 };
 
-} // namespace rmoss_gz_base
+}  // namespace rmoss_gz_base
 
 #endif // RMOSS_GZ_BASE__GZ_GIMBAL_ENCODER_HPP_

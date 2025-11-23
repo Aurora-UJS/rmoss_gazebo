@@ -69,6 +69,6 @@ private:
   bool follow_mode_flag_{true};
 };
 
-} // namespace rmoss_gz_base
+}  // namespace rmoss_gz_base
 
-#endif // RMOSS_GZ_BASE__CHASSIS_CONTROLLER_HPP_
+#endif  // RMOSS_GZ_BASE__CHASSIS_CONTROLLER_HPP_

@@ -79,4 +79,4 @@ void GzGimbalImu::gz_imu_cb(const gz::msgs::IMU & msg)
   position_sensor_->update(cur_position_, node_->get_clock()->now());
 }
 
-} // namespace rmoss_gz_base
+}  // namespace rmoss_gz_base

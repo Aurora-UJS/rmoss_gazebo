@@ -47,6 +47,6 @@ void get_pid_parameter(
   rclcpp::Node::SharedPtr node, const std::string & name,
   PidParam & pid_param);
 
-} // namespace rmoss_gz_base
+}  // namespace rmoss_gz_base
 
-#endif // RMOSS_GZ_BASE__PID_HPP_
+#endif  // RMOSS_GZ_BASE__PID_HPP_

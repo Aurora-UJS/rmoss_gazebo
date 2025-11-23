@@ -50,4 +50,4 @@ void GzOdometry::gz_odometry_cb(const gz::msgs::Odometry & msg)
   odometry_sensor_->update(odom_msg, node_->get_clock()->now());
 }
 
-} // namespace rmoss_gz_base
+}  // namespace rmoss_gz_base

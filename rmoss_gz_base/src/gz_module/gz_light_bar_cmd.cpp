@@ -37,4 +37,4 @@ void GzLightBarCmd::set_state(int state)
   gz_cmd_pub_->Publish(gz_msg);
 }
 
-} // namespace rmoss_gz_base
+}  // namespace rmoss_gz_base

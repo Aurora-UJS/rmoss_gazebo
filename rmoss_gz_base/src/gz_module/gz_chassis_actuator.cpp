@@ -43,4 +43,4 @@ void GzChassisActuator::set(const geometry_msgs::msg::Twist & data)
   gz_chassis_cmd_pub_->Publish(gz_msg);
 }
 
-} // namespace rmoss_gz_base
+}  // namespace rmoss_gz_base

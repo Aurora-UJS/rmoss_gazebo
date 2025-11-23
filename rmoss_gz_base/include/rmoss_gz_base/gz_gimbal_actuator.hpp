@@ -44,6 +44,7 @@ private:
   bool enable_{false};
 };
 
-} // namespace rmoss_gz_base
+}  // namespace rmoss_gz_base
 
-#endif // RMOSS_GZ_BASE__GZ_GIMBAL_ACTUATOR_HPP_
+#endif  // RMOSS_GZ_BASE__GZ_GIMBAL_ACTUATOR_HPP_
+  

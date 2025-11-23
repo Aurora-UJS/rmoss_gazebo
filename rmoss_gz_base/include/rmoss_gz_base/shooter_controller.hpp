@@ -45,5 +45,5 @@ private:
     ros_shoot_cmd_sub_;
   Actuator<rmoss_interfaces::msg::ShootCmd>::SharedPtr shoot_actuator_;
 };
-} // namespace rmoss_gz_base
-#endif // RMOSS_GZ_BASE__SHOOTER_CONTROLLER_HPP_
+}  // namespace rmoss_gz_base
+#endif  // RMOSS_GZ_BASE__SHOOTER_CONTROLLER_HPP_

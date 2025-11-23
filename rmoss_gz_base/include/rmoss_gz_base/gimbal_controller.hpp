@@ -76,6 +76,6 @@ private:
   bool update_pid_flag_{true};
 };
 
-} // namespace rmoss_gz_base
+}  // namespace rmoss_gz_base
 
-#endif // RMOSS_GZ_BASE__GIMBAL_CONTROLLER_HPP_
+#endif  // RMOSS_GZ_BASE__GIMBAL_CONTROLLER_HPP_

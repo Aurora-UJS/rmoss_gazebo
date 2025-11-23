@@ -22,19 +22,17 @@
 #include "gz/transport/Node.hh"
 #include "hardware_interface.hpp"
 
-namespace rmoss_gz_base
-{
+namespace rmoss_gz_base {
 
 class GzChassisActuator : public Actuator<geometry_msgs::msg::Twist> {
 public:
-  GzChassisActuator(
-    rclcpp::Node::SharedPtr node,
-    const std::shared_ptr<gz::transport::Node> & gz_node,
-    const std::string & gz_chassis_cmd_topic);
+  GzChassisActuator(rclcpp::Node::SharedPtr node,
+                    const std::shared_ptr<gz::transport::Node> &gz_node,
+                    const std::string &gz_chassis_cmd_topic);
   ~GzChassisActuator() {}
 
-  void set(const geometry_msgs::msg::Twist & data) override;
-  void enable(bool enable) {enable_ = enable;}
+  void set(const geometry_msgs::msg::Twist &data) override;
+  void enable(bool enable) { enable_ = enable; }
 
 private:
   rclcpp::Node::SharedPtr node_;
@@ -43,6 +41,6 @@ private:
   bool enable_{false};
 };
 
-} // namespace rmoss_gz_base
+}  // namespace rmoss_gz_base
 
-#endif // RMOSS_GZ_BASE__GZ_CHASSIS_ACTUATOR_HPP_
+#endif  // RMOSS_GZ_BASE__GZ_CHASSIS_ACTUATOR_HPP_

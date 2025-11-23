@@ -55,4 +55,4 @@ void GzGimbalEncoder::gz_Joint_state_cb(const gz::msgs::Model & msg)
   velocity_sensor_->update(velocity, node_->get_clock()->now());
 }
 
-} // namespace rmoss_gz_base
+}  // namespace rmoss_gz_base

@@ -65,4 +65,4 @@ void GzShootActuator::set(const rmoss_interfaces::msg::ShootCmd & data)
   gz_shoot_cmd_pub_->Publish(gz_msg);
 }
 
-} // namespace rmoss_gz_base
+}  // namespace rmoss_gz_base

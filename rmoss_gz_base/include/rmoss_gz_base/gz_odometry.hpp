@@ -51,6 +51,6 @@ private:
   std::shared_ptr<DataSensor<nav_msgs::msg::Odometry>> odometry_sensor_;
 };
 
-} // namespace rmoss_gz_base
+}  // namespace rmoss_gz_base
 
-#endif // RMOSS_GZ_BASE__GZ_ODOMETRY_HPP_
+#endif  // RMOSS_GZ_BASE__GZ_ODOMETRY_HPP_

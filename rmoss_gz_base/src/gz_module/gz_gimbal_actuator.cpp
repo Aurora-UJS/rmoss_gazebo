@@ -46,4 +46,4 @@ void GzGimbalActuator::set(const rmoss_interfaces::msg::Gimbal & data)
   gz_yaw_pub_->Publish(gz_msg);
 }
 
-} // namespace rmoss_gz_base
+}  // namespace rmoss_gz_base
