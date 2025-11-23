@@ -28,22 +28,24 @@
 #include "sensor_msgs/msg/camera_info.hpp"
 #include "sensor_msgs/msg/image.hpp"
 
-namespace rmoss_gz_cam {
-// Node wrapper for IgnCam.
+namespace rmoss_gz_cam
+{
+// Node wrapper for GzCam.
 class GzCamNode {
 public:
   explicit GzCamNode(
-      const rclcpp::NodeOptions &options = rclcpp::NodeOptions());
+    const rclcpp::NodeOptions & options = rclcpp::NodeOptions());
   rclcpp::node_interfaces::NodeBaseInterface::SharedPtr
-  get_node_base_interface() {
+  get_node_base_interface()
+  {
     return node_->get_node_base_interface();
   }
 
 private:
-  void gz_image_cb(const gz::msgs::Image &msg);
+  void gz_image_cb(const gz::msgs::Image & msg);
   void get_camera_info_cb(
-      const rmoss_interfaces::srv::GetCameraInfo::Request::SharedPtr request,
-      rmoss_interfaces::srv::GetCameraInfo::Response::SharedPtr response);
+    const rmoss_interfaces::srv::GetCameraInfo::Request::SharedPtr request,
+    rmoss_interfaces::srv::GetCameraInfo::Response::SharedPtr response);
 
 private:
   rclcpp::Node::SharedPtr node_;
@@ -53,7 +55,7 @@ private:
   // image_transporter for camera publisher
   std::shared_ptr<image_transport::CameraPublisher> cam_pub_;
   rclcpp::Service<rmoss_interfaces::srv::GetCameraInfo>::SharedPtr
-      get_camera_info_srv_;
+    get_camera_info_srv_;
   // params
   std::string camera_name_{"camera"};
   std::string camera_frame_id_{""};

@@ -23,8 +23,10 @@
 
 using namespace std::chrono_literals;
 
-namespace rmoss_gz_cam {
-GzCamNode::GzCamNode(const rclcpp::NodeOptions &options) {
+namespace rmoss_gz_cam
+{
+GzCamNode::GzCamNode(const rclcpp::NodeOptions & options)
+{
   node_ = std::make_shared<rclcpp::Node>("gz_cam", options);
   gz_node_ = std::make_shared<gz::transport::Node>();
   // declare parameters
@@ -60,7 +62,8 @@ GzCamNode::GzCamNode(const rclcpp::NodeOptions &options) {
         };
     gz_node_->Subscribe(gz_camera_info_topic, camera_info_cb);
     if (future_result.wait_for(std::chrono::seconds(5)) !=
-        std::future_status::ready) {
+        std::future_status::ready)
+    {
       RCLCPP_FATAL(node_->get_logger(), "failed to get camera info");
     }
     gz_node_->Unsubscribe(gz_camera_info_topic);
@@ -117,8 +120,8 @@ void GzCamNode::gz_image_cb(const gz::msgs::Image &msg) {
 }
 
 void GzCamNode::get_camera_info_cb(
-    const rmoss_interfaces::srv::GetCameraInfo::Request::SharedPtr request,
-    rmoss_interfaces::srv::GetCameraInfo::Response::SharedPtr response) {
+  const rmoss_interfaces::srv::GetCameraInfo::Request::SharedPtr request,
+  rmoss_interfaces::srv::GetCameraInfo::Response::SharedPtr response) {
   (void)request;
   if (cam_info_valid_) {
     response->camera_info = cam_info_;
