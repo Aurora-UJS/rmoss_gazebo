@@ -27,7 +27,6 @@
 #include "rmoss_gz_base/gz_light_bar_cmd.hpp"
 #include "rmoss_gz_base/gz_odometry.hpp"
 #include "rmoss_gz_base/gz_shoot_actuator.hpp"
-
 #include "rmoss_gz_base/chassis_controller.hpp"
 #include "rmoss_gz_base/gimbal_controller.hpp"
 #include "rmoss_gz_base/odometry_publisher.hpp"
@@ -81,6 +80,6 @@ private:
   bool is_red_;
 };
 
-} // namespace rmoss_gz_base
+}  // namespace rmoss_gz_base
 
-#endif // RMOSS_GZ_BASE__RMUA19_ROBOT_BASE_NODE_HPP_
+#endif  // RMOSS_GZ_BASE__RMUA19_ROBOT_BASE_NODE_HPP_

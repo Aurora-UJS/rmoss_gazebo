@@ -47,4 +47,3 @@ private:
 }  // namespace rmoss_gz_base
 
 #endif  // RMOSS_GZ_BASE__GZ_GIMBAL_ACTUATOR_HPP_
-  

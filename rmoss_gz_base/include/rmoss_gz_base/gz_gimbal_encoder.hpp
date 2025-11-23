@@ -61,4 +61,4 @@ private:
 
 }  // namespace rmoss_gz_base
 
-#endif // RMOSS_GZ_BASE__GZ_GIMBAL_ENCODER_HPP_
+#endif  // RMOSS_GZ_BASE__GZ_GIMBAL_ENCODER_HPP_

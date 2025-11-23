@@ -40,4 +40,4 @@ private:
 
 }  // namespace rmoss_gz_base
 
-#endif // RMOSS_GZ_BASE__GZ_LIGHT_BAR_CMD_HPP_
+#endif  // RMOSS_GZ_BASE__GZ_LIGHT_BAR_CMD_HPP_
