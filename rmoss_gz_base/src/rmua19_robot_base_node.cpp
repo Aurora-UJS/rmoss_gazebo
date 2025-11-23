@@ -132,7 +132,7 @@ void Rmua19RobotBaseNode::enable_power_cb(
   }
 }
 
-} // namespace rmoss_gz_base
+}  // namespace rmoss_gz_base
 
 #include "rclcpp_components/register_node_macro.hpp"
 
