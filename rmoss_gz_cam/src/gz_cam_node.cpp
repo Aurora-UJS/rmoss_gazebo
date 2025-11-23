@@ -50,12 +50,14 @@ GzCamNode::GzCamNode(const rclcpp::NodeOptions & options)
   node_->get_parameter("use_image_transport_camera_publisher",
                        use_image_transport_camera_publisher_);
   // get camera info form gazebo
-  if (gz_camera_info_topic != "") {
+  if (gz_camera_info_topic != "")
+  {
     // get camera info automatically
     std::promise<bool> prom;
     std::future<bool> future_result = prom.get_future();
-    std::function<void(const gz::msgs::CameraInfo &msg)> camera_info_cb =
-        [&](const gz::msgs::CameraInfo &msg) {
+    std::function<void(const gz::msgs::CameraInfo & msg)> camera_info_cb = [&](
+        const gz::msgs::CameraInfo & msg)
+        {
           ros_gz_bridge::convert_gz_to_ros(msg, cam_info_);
           cam_info_valid_ = true;
           prom.set_value(true);
@@ -69,13 +71,16 @@ GzCamNode::GzCamNode(const rclcpp::NodeOptions & options)
     gz_node_->Unsubscribe(gz_camera_info_topic);
   }
   // create image_transport
-  if (!use_image_transport_camera_publisher_) {
+  if (!use_image_transport_camera_publisher_)
+  {
     img_pub_ = std::make_shared<image_transport::Publisher>(
         image_transport::create_publisher(
             node_.get(), camera_name_ + "/image_raw",
             use_qos_profile_sensor_data_ ? rmw_qos_profile_sensor_data
                                          : rmw_qos_profile_default));
-  } else {
+  }
+  else
+  {
     cam_pub_ = std::make_shared<image_transport::CameraPublisher>(
         image_transport::create_camera_publisher(
             node_.get(), camera_name_ + "/image_raw",
@@ -85,7 +90,8 @@ GzCamNode::GzCamNode(const rclcpp::NodeOptions & options)
   // create gazebo image subscriber
   auto ret =
       gz_node_->Subscribe(gz_camera_image_topic, &GzCamNode::gz_image_cb, this);
-  if (!ret) {
+  if (!ret)
+  {
     RCLCPP_FATAL(node_->get_logger(), "failed to create ignition subscriber");
     return;
   }
@@ -98,8 +104,10 @@ GzCamNode::GzCamNode(const rclcpp::NodeOptions & options)
   RCLCPP_INFO(node_->get_logger(), "init successfully!");
 }
 
-void GzCamNode::gz_image_cb(const gz::msgs::Image &msg) {
-  if (!run_flag_) {
+void GzCamNode::gz_image_cb(const gz::msgs::Image &msg)
+{
+  if (!run_flag_)
+  {
     return;
   }
   sensor_msgs::msg::Image ros_msg;
@@ -108,10 +116,14 @@ void GzCamNode::gz_image_cb(const gz::msgs::Image &msg) {
   ros_msg.header.stamp = stamp;
   ros_msg.header.frame_id = camera_frame_id_;
   // publish image msg
-  if (this->cam_pub_->getNumSubscribers() > 0) {
-    if (!use_image_transport_camera_publisher_) {
+  if (this->cam_pub_->getNumSubscribers() > 0)
+  {
+    if (!use_image_transport_camera_publisher_)
+    {
       img_pub_->publish(ros_msg);
-    } else {
+    }
+    else
+    {
       cam_info_.header.stamp = stamp;
       cam_info_.header.frame_id = camera_frame_id_;
       cam_pub_->publish(ros_msg, cam_info_);
@@ -120,13 +132,17 @@ void GzCamNode::gz_image_cb(const gz::msgs::Image &msg) {
 }
 
 void GzCamNode::get_camera_info_cb(
-  const rmoss_interfaces::srv::GetCameraInfo::Request::SharedPtr request,
-  rmoss_interfaces::srv::GetCameraInfo::Response::SharedPtr response) {
+    const rmoss_interfaces::srv::GetCameraInfo::Request::SharedPtr request,
+    rmoss_interfaces::srv::GetCameraInfo::Response::SharedPtr response)
+{
   (void)request;
-  if (cam_info_valid_) {
+  if (cam_info_valid_)
+  {
     response->camera_info = cam_info_;
     response->success = true;
-  } else {
+  }
+  else
+  {
     response->success = false;
   }
 }
