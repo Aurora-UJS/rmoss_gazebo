@@ -65,6 +65,6 @@ private:
   bool cam_info_valid_{false};
 };
 
-} // namespace rmoss_gz_cam
+}  // namespace rmoss_gz_cam
 
-#endif // RMOSS_GZ_CAM__GZ_CAM_NODE_HPP_
+#endif  // RMOSS_GZ_CAM__GZ_CAM_NODE_HPP_

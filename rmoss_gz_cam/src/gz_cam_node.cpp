@@ -128,7 +128,7 @@ void GzCamNode::get_camera_info_cb(
   }
 }
 
-} // namespace rmoss_gz_cam
+}  // namespace rmoss_gz_cam
 
 #include "rclcpp_components/register_node_macro.hpp"
 
