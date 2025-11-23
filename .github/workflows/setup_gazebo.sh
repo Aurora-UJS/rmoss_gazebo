@@ -12,7 +12,7 @@ apt-get update -qq
 apt-get install -y gz-harmonic
 
 # Install ROS 2 Gazebo bridge
-# Note: ros-humble-ros-gz is the new package name replacing ros-humble-ros-ign
+# Note: ros-jazzy-ros-gz is the new package name replacing ros-jazzy-ros-ign
 apt-get install -y// filepath: /home/xlqmu/rmoss_gazebo/.github/workflows/setup_gazebo.sh
 #!/bin/bash
 # Install necessary tools
@@ -28,5 +28,5 @@ apt-get update -qq
 apt-get install -y gz-harmonic
 
 # Install ROS 2 Gazebo bridge
-# Note: ros-humble-ros-gz is the new package name replacing ros-humble-ros-ign
-apt-get install -y ros-humble-ros-gz
+# Note: ros-jazzy-ros-gz is the new package name replacing ros-jazzy-ros-ign
+apt-get install -y ros-jazzy-ros-gz

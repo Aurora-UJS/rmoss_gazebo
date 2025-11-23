@@ -5,6 +5,6 @@
 #
 test.sh
 
-build/
-install/
-log/
+build/*
+install/*
+log/*
